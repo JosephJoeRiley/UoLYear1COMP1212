@@ -18,15 +18,21 @@ CHIP CW1Q1 {
 	And (x = nots2, 	y = s1, out = s1AndNots2);
 	Or	(x = nots1Ands2,y = s1AndNots2, out = s1Xors2);
 	
-	And(x=xy, y=s1AndNots2, out = firstTerm);
+	
+	Or(x=s1, y=nots2, out=s1imps2);
+	And(x= xy, y=s1imps2, out=firstTerm);
 
 	Or(x=s1Xors2, y=s1s2, out=sndbrac);
 	And(x=notxAndy, y=sndbrac, out=secondTerm);
 
-	And(x=xAndnoty, y=s1Xors2, out=thirdTerm);	
+	Or(x=s1Xors2, y=s1s2, out=thrdBrac);
+	And(x=xAndnoty, y=thrdBrac, out=thirdTerm);	
 
+	Not(x=xy, out=notxy);
+	And(x=s1s2, y=notxy, out=fourthTerm);
 	
 	Or	(x = firstTerm,  y = secondTerm, out = firstOrSecond);
-	Or	(x = firstOrSecond, y = thirdTerm, out = f);
+	Or	(x = fourthTerm, y = thirdTerm, out =  thirdOrFourth);
+	Or  (x = firstOrSecond, y= thirdOrFourth, out = f);
 }
 
