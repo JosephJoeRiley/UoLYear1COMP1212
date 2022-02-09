@@ -1,5 +1,28 @@
-CHIP CW1Q2 {
-IN a, b, c;
-OUT f;
-PARTS:
+CHIP CW1Q1 {
+	IN s1, s2, x, y;
+	OUT f;
+
+
+	PARTS:
+	Not (x = x,  out =  notx);
+	Not (x = y,  out =  noty);
+	Not (x = s1, out =  nots1);
+	Not (x = s2, out =  nots2);
+	
+	And (x = x,        y = y, out =  xy);
+	And (x = notx,     y = y, out = notxAndy);
+	And (x = noty, 	   y = x, out = xAndNoty);
+	Or	(x = notxAndy, y = xAndNoty, out = xXory);
+	
+	And(x = nots2, y = xy, out = thirdInrBracPart1);
+	And(x = s2,    y = notxAndy, out = thirdInrBracPart2);
+
+	And (x = nots2, y = xy, out = firstTerm);
+	And (x = s2,    y = xXory, out = secondTerm);
+	And (x = thirdInrBracPart1, y = thirdInrBracPart2,
+	out  =  thirdTerm);
+
+	Or	(x = firstTerm,  y = secondTerm, out = comp1st2nd);
+	Or 	(x = comp1st2nd, y = thirdTerm, out = out);
 }
+
