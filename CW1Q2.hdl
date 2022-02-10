@@ -1,5 +1,0 @@
-CHIP CW1Q2 {
-IN a, b, c;
-OUT f;
-PARTS:
-}
