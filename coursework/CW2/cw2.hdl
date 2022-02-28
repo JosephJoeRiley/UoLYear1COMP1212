@@ -1,0 +1,6 @@
+//This is a shift register and a 
+//an 8 bit register with the data
+//running in parallel.
+//The bit shift and the data are ANDed 
+//together and input into an 8 bit OR bus
+//which outputs the serial data.
