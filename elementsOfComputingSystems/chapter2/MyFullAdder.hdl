@@ -1,0 +1,14 @@
+CHIP MyFullAdder {
+    IN a, b, c;
+    OUT sum;
+
+    PARTS:
+    Not(x=a, out=notA);
+    Not(x=b, out=notB);
+    And(x=a, y=notB, out=aNotb);
+    And(x=b, y=notA, out=bNota);
+    Or(x=aNotb, y=bNota, out=aXorb);
+
+    And(x=c,y=aXorb, out= notSum);
+    Not(x=notSum, out=sum);
+}
