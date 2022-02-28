@@ -1,0 +1,12 @@
+//This is a collection of 4 registers in a line.
+//A register is a combination of a MUX gate and a
+//DFF flip flop. 
+
+CHIP CW1Q1 {
+    IN x;
+    OUT out[8];
+
+    PARTS:
+        
+
+}

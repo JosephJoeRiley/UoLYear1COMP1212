@@ -1,0 +1,8 @@
+CHIP PracticeSRFlipFlop {
+    IN s, r, q, notQ;
+    OUT q, notQ;
+    PARTS:
+    Nand(x=s, y=notQ, out=q);
+    Nand(x=r, y=q, out=notQ);
+    
+}
