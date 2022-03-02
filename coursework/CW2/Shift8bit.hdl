@@ -2,12 +2,17 @@
 //A register is a combination of a MUX gate and a
 //DFF flip flop. 
 
-CHIP Shift8Bit {
+CHIP Shift8bit {
     IN x;
     OUT out[8];
 
-    
-
     PARTS:
-    Register(in=x, load=1, out=out[t]);
+    Bit(x=x, load=true,  out=o0, out=out[0]);
+    Bit(x=o0, load=true, out=o1, out=out[1]);
+    Bit(x=o1, load=true, out=o2, out=out[2]);
+    Bit(x=o2, load=true, out=o3, out=out[3]);
+    Bit(x=o3, load=true, out=o4, out=out[4]);
+    Bit(x=o4, load=true, out=o5, out=out[5]);
+    Bit(x=o5, load=true, out=o6, out=out[6]);
+    Bit(x=o6, load=true, out=out[7]);
 }

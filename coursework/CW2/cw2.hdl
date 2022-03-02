@@ -10,5 +10,55 @@ CHIP cw2 {
    OUT sout, complete;
 
    PARTS:
+//The 8 bit data register   
+   Bit(x=indata[0], load=load, out=d0);
+   Bit(x=indata[1], load=load, out=d1);
+   Bit(x=indata[2], load=load, out=d2);
+   Bit(x=indata[3], load=load, out=d3);
+   Bit(x=indata[4], load=load, out=d4);
+   Bit(x=indata[5], load=load, out=d5);
+   Bit(x=indata[6], load=load, out=d6);
+   Bit(x=indata[7], load=load, out=d7);
+
+//The 8 bit shift register
+   And(x=theyreAllZeroes, y=enable, out=input);
+   Bit(x=input, load=true, out=o0);
+   Bit(x=o0, load=true, out=o1);
+   Bit(x=o1, load=true, out=o2);
+   Bit(x=o2, load=true, out=o3);
+   Bit(x=o3, load=true, out=o4);
+   Bit(x=o4, load=true, out=o5);
+   Bit(x=o5, load=true, out=o6);
+   Bit(x=o6, load=true, out=o7, out=complete);
+   
+//Preparation for the check to see if we can take the enable bit
+   Or(x=o0, y=o1, out=a1);
+   Or(x=o2, y=o3, out=a2);
+   Or(x=o4, y=o5, out=a3);
+   Or(x=o6, y=o7, out=a4);
+   Or(x=a1, y=a2, out=a5);
+   Or(x=a3, y=a4, out=a6);
+   Or(x=a5, y=a6, out=thereIsAOneinTheStream);
+   Not(x=thereIsAOneinTheStream, out=theyreAllZeroes);
+
+   And(x=o0,y=d0,out=z0);
+   And(x=o1,y=d1,out=z1);
+   And(x=o2,y=d2,out=z2);
+   And(x=o3,y=d3,out=z3);
+   And(x=o4,y=d4,out=z4);
+   And(x=o5,y=d5,out=z5);
+   And(x=o6,y=d6,out=z6);
+   And(x=o7,y=d7,out=z7);
+
+    Or(x=z0, y=z1, out=c1);
+    Or(x=z2, y=z3, out=c2);
+    Or(x=z4, y=z5, out=c3);
+    Or(x=z6, y=z7, out=c4);
+    Or(x=c1, y=c2, out=c5);
+    Or(x=c3, y=c4, out=c6);
+    Or(x=c5, y=c6, out=sout);
+   
+
+
    
 }
