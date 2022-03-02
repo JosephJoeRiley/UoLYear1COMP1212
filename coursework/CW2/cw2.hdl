@@ -4,3 +4,11 @@
 //The bit shift and the data are ANDed 
 //together and input into an 8 bit OR bus
 //which outputs the serial data.
+
+CHIP cw2 {
+   IN  indata[8], enable, load;
+   OUT sout, complete;
+
+   PARTS:
+   
+}

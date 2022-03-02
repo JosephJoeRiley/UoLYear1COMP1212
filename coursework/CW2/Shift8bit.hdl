@@ -2,11 +2,12 @@
 //A register is a combination of a MUX gate and a
 //DFF flip flop. 
 
-CHIP CW1Q1 {
+CHIP Shift8Bit {
     IN x;
     OUT out[8];
 
-    PARTS:
-        
+    
 
+    PARTS:
+    Register(in=x, load=1, out=out[t]);
 }
